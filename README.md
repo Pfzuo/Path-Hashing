@@ -21,6 +21,8 @@ The physical storage structure of path hashing is simple and efficient without p
 > We use the xxHash as an example of the hash function in the implementation code. After cloning the repository, the hash function can be modified to fit your needs.
 
 
+## The Path Hashing Paper
 
+Pengfei Zuo and Yu Hua, "A Write-friendly Hashing Scheme for Non-volatile Memory Systems", submitted to MSST 2017.
 
 
