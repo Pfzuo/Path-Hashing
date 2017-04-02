@@ -23,6 +23,6 @@ The physical storage structure of path hashing is simple and efficient without p
 
 ## The Path Hashing Paper
 
-Pengfei Zuo and Yu Hua, "A Write-friendly Hashing Scheme for Non-volatile Memory Systems", submitted to MSST 2017.
+Pengfei Zuo and Yu Hua, "A Write-friendly Hashing Scheme for Non-volatile Memory Systems", in Proceedings of the 33st International Conference on Massive Storage Systems and Technology (MSST), 2017.
 
 
