@@ -45,6 +45,7 @@ int main(int argc, char* argv[])
 
     printf("\nSize: %d\n", p->size);
     printf("Capacity: %d\n", p->total_capacity);
+	printf("Space utilization: %f\n", p->size*1.0/p->total_capacity);
     path_destroy(p, 1);
 
     return 0;
