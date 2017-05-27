@@ -1,8 +1,8 @@
 ## Path Hashing
 
-Path Hashing: Storage cells in the path hashing are logically organized as an inverted complete binary tree. The last level of the inverted binary tree, i.e., all leaf nodes, is considered as the hash table. All nodes in the remaining levels are considered as the shared positions to deal with hash collisions. Path hashing leverages three techniques, i.e., position sharing, double-path hashing and path shortening, allowing insertion and deletion requests to incur no extra writes to NVMs, while maintaining high performance of hash table in terms of space utilization and request latency.
+*Path Hashing:* Storage cells in the path hashing are logically organized as an inverted complete binary tree. The last level of the inverted binary tree, i.e., all leaf nodes, is considered as the hash table. All nodes in the remaining levels are considered as the shared positions to deal with hash collisions. Path hashing leverages three techniques, i.e., position sharing, double-path hashing and path shortening, allowing insertion and deletion requests to incur no extra writes to NVMs, while maintaining high performance of hash table in terms of space utilization and request latency.
 
-Cache-optimized Path Hashing: To improve the cache line utilization of memory accesses in path hashing, cache-optimized path hashing divides the binary tree into many subtrees and then packs the cells in each subtree together and stores them in the contiguous memory space. Hence, a single memory access can prefetch multiple cells belonging to the same path, which reduces the number of memory accesses to obtain higher performance.
+*Cache-optimized Path Hashing:* To improve the cache line utilization of memory accesses in path hashing, cache-optimized path hashing divides the binary tree into many subtrees and then packs the cells in each subtree together and stores them in the contiguous memory space. Hence, a single memory access can prefetch multiple cells belonging to the same path, which reduces the number of memory accesses to obtain higher performance.
 
 ## Purpose
 
