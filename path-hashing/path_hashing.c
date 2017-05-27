@@ -57,7 +57,7 @@ path_hash *path_init(uint32_t levels, uint32_t reserved_levels)
 }
 
 
-uint8_t path_insert(path_hash *path, char *key, void *value)
+uint8_t path_insert(path_hash *path, uint8_t *key, uint8_t *value)
 {
     uint32_t f_idx = F_IDX();
     uint32_t s_idx = S_IDX();
@@ -70,18 +70,19 @@ uint8_t path_insert(path_hash *path, char *key, void *value)
     for(i = 0; i < path->reserved_levels; i ++){
         if (!path->nodes[f_idx].token)               
         {
-            path->nodes[f_idx].key = malloc(strlen(key) + 1);
-            strcpy(path->nodes[f_idx].key, key);
+            //path->nodes[f_idx].key = malloc(strlen(key) + 1);
+           // strcpy(path->nodes[f_idx].key, key);
+		   	memcpy(path->nodes[f_idx].key, key, KEY_LEN);
+			memcpy(path->nodes[f_idx].value, value, VALUE_LEN);
             path->nodes[f_idx].token = 1;
-            path->nodes[f_idx].value = value;
+            //path->nodes[f_idx].value = value;
             path->size++;
             return 0;
         }
         else if (!path->nodes[s_idx].token)
         {
-            path->nodes[s_idx].key = malloc(strlen(key) + 1);
-            strcpy(path->nodes[s_idx].key, key);
-            path->nodes[s_idx].value = value;
+		   	memcpy(path->nodes[s_idx].key, key, KEY_LEN);
+			memcpy(path->nodes[s_idx].value, value, VALUE_LEN);
             path->nodes[s_idx].token = 1;
             path->size++;
             return 0;
@@ -99,7 +100,7 @@ uint8_t path_insert(path_hash *path, char *key, void *value)
     return 1;
 }
 
-uint8_t path_delete(path_hash *path, char *key)
+uint8_t path_delete(path_hash *path, uint8_t *key)
 {
     uint32_t f_idx = F_IDX();
     uint32_t s_idx = S_IDX();
@@ -139,7 +140,7 @@ uint8_t path_delete(path_hash *path, char *key)
     return 1;   
 }
 
-void* path_query(path_hash *path, char *key)
+uint8_t* path_query(path_hash *path, uint8_t *key)
 {   
     uint32_t f_idx = F_IDX();
     uint32_t s_idx = S_IDX();
@@ -171,27 +172,10 @@ void* path_query(path_hash *path, char *key)
         s_idx = sub_s_idx + capacity;           
     }
     
-    printf("The key does not exists: %s\n", key);   
+    //printf("The key does not exists: %s\n", key);   
     return NULL;
 }
 
-void path_destroy(path_hash *path, uint8_t deep)
-{
-    int i;
-    for (i = 0; i < path->total_capacity; i++)
-    {
-        if (path->nodes[i].token)
-        {
-            free(path->nodes[i].key);
-            if (deep)
-            {
-                free(path->nodes[i].value);
-            }
-        }
-    }
-    free(path->nodes);
-    free(path);
-}
 
 
 

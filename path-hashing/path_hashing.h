@@ -7,12 +7,14 @@
 #include <math.h>
 
 #include "hash.h"
+#define KEY_LEN 10
+#define VALUE_LEN 10
 
 typedef struct path_node
 {
     uint8_t token;                  // the token signifies whether the node is empty
-    char *key;
-    void *value;
+    uint8_t key[KEY_LEN];
+    uint8_t value[VALUE_LEN];
 } path_node;
 
 
@@ -30,11 +32,11 @@ typedef struct path_hash
 
 path_hash *path_init(uint32_t levels, uint32_t reserved_levels);       // Initialize a path hashing
 
-uint8_t path_insert(path_hash *path, char *key, void *value);          // Insert an item in path hashing
+uint8_t path_insert(path_hash *path, uint8_t *key, uint8_t *value);          // Insert an item in path hashing
 
-uint8_t path_delete(path_hash *path, char *key);                       // Delete an item in path hashing
+uint8_t path_delete(path_hash *path, uint8_t *key);                       // Delete an item in path hashing
 
-void* path_query(path_hash *path, char *key);                          // Query an item in path hashing
+uint8_t* path_query(path_hash *path, uint8_t *key);                          // Query an item in path hashing
 
 
 
