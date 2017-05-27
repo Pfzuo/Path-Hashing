@@ -1,6 +1,8 @@
 ## Path Hashing
 
-Storage cells in the path hashing are logically organized as an inverted complete binary tree. The last level of the inverted binary tree, i.e., all leaf nodes, is considered as the hash table. All nodes in the remaining levels are considered as the shared positions to deal with hash collisions. Path hashing leverages three techniques, i.e., position sharing, double-path hashing and path shortening, allowing insertion and deletion requests to incur no extra writes to NVMs, while maintaining high performance of hash table in terms of space utilization and request latency.
+Path Hashing: Storage cells in the path hashing are logically organized as an inverted complete binary tree. The last level of the inverted binary tree, i.e., all leaf nodes, is considered as the hash table. All nodes in the remaining levels are considered as the shared positions to deal with hash collisions. Path hashing leverages three techniques, i.e., position sharing, double-path hashing and path shortening, allowing insertion and deletion requests to incur no extra writes to NVMs, while maintaining high performance of hash table in terms of space utilization and request latency.
+
+Cache-optimized Path Hashing: To improve the cache line utilization of memory accesses in path hashing, cache-optimized path hashing divides the binary tree into many subtrees and then packs the cells in each subtree together and stores them in the contiguous memory space. Hence, a single memory access can prefetch multiple cells belonging to the same path, which reduces the number of memory accesses to obtain higher performance.
 
 ## Purpose
 
@@ -10,9 +12,6 @@ Storage cells in the path hashing are logically organized as an inverted complet
 
 > *Low request latency.* Path hashing incurs low latency for insertion, deletion, and query requests, due to only probing the nodes in several levels. The flat-addressed storage structure in path hashing allows all nodes in a read path to be read in parallel from NVMs, which has the time complexity of O(1).
 
-## Implementation
-
-The physical storage structure of path hashing is simple and efficient without pointers. Path hashing is implemented in a flat-addressed one-dimensional structure. The leaf nodes in the level *L* are stored in the first *2^L* positions in the one-dimensional structure. The level *L-1* is stored in the following *2^{L-1}* positions, and so on.
 
 ## Usage 
 
@@ -24,5 +23,7 @@ The physical storage structure of path hashing is simple and efficient without p
 ## The Path Hashing Paper
 
 Pengfei Zuo and Yu Hua, "A Write-friendly Hashing Scheme for Non-volatile Memory Systems", in Proceedings of the 33st International Conference on Massive Storage Systems and Technology (MSST), 2017.
+
+Pengfei Zuo and Yu Hua, "A Write-friendly and Cache-optimized Hashing Scheme for Non-volatile Memory Systems", submitted to IEEE Transactions on Parallel and Distributed Systems (TPDS).
 
 
