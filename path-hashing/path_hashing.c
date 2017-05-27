@@ -133,7 +133,7 @@ uint8_t path_delete(path_hash *path, uint8_t *key)
         s_idx = sub_s_idx + capacity;       
     }
 
-    printf("The key does not exists: %s\n", key);
+    printf("The key does not exist: %s\n", key);
     return 1;   
 }
 
@@ -169,7 +169,7 @@ uint8_t* path_query(path_hash *path, uint8_t *key)
         s_idx = sub_s_idx + capacity;           
     }
     
-    printf("The key does not exists: %s\n", key);   
+    printf("The key does not exist: %s\n", key);   
     return NULL;
 }
 
