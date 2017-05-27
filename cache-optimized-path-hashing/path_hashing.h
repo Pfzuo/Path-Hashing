@@ -11,15 +11,15 @@
 #define VALUE_LEN 10
 
 typedef struct node_entry{
-	uint8_t token;                  // the token signifies whether the node is empty
+    uint8_t token;                  // the token signifies whether the node is empty
     uint8_t key[KEY_LEN];
     uint8_t value[VALUE_LEN];
 } node_entry;
 
 typedef struct path_node
 {
-	node_entry entry[3];
-	uint8_t pad; 
+    node_entry entry[3];
+    uint8_t pad;                    // align at a cache line
 } path_node;
 
 
