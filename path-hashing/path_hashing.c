@@ -70,19 +70,16 @@ uint8_t path_insert(path_hash *path, uint8_t *key, uint8_t *value)
     for(i = 0; i < path->reserved_levels; i ++){
         if (!path->nodes[f_idx].token)               
         {
-            //path->nodes[f_idx].key = malloc(strlen(key) + 1);
-           // strcpy(path->nodes[f_idx].key, key);
-		   	memcpy(path->nodes[f_idx].key, key, KEY_LEN);
-			memcpy(path->nodes[f_idx].value, value, VALUE_LEN);
+            memcpy(path->nodes[f_idx].key, key, KEY_LEN);
+            memcpy(path->nodes[f_idx].value, value, VALUE_LEN);
             path->nodes[f_idx].token = 1;
-            //path->nodes[f_idx].value = value;
             path->size++;
             return 0;
         }
         else if (!path->nodes[s_idx].token)
         {
-		   	memcpy(path->nodes[s_idx].key, key, KEY_LEN);
-			memcpy(path->nodes[s_idx].value, value, VALUE_LEN);
+            memcpy(path->nodes[s_idx].key, key, KEY_LEN);
+            memcpy(path->nodes[s_idx].value, value, VALUE_LEN);
             path->nodes[s_idx].token = 1;
             path->size++;
             return 0;
@@ -172,7 +169,7 @@ uint8_t* path_query(path_hash *path, uint8_t *key)
         s_idx = sub_s_idx + capacity;           
     }
     
-    //printf("The key does not exists: %s\n", key);   
+    printf("The key does not exists: %s\n", key);   
     return NULL;
 }
 
