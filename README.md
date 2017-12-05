@@ -24,6 +24,6 @@
 
 Pengfei Zuo and Yu Hua, "A Write-friendly Hashing Scheme for Non-volatile Memory Systems", in Proceedings of the 33st International Conference on Massive Storage Systems and Technology (MSST), 2017.
 
-Pengfei Zuo and Yu Hua, "A Write-friendly and Cache-optimized Hashing Scheme for Non-volatile Memory Systems", submitted to IEEE Transactions on Parallel and Distributed Systems (TPDS).
+Pengfei Zuo and Yu Hua, "A Write-friendly and Cache-optimized Hashing Scheme for Non-volatile Memory Systems", Accepted by IEEE Transactions on Parallel and Distributed Systems (TPDS), 2018. (To appear)
 
 
